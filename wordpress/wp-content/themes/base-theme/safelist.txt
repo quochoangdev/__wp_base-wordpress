@@ -1,0 +1,13 @@
+alignfull
+alignwide
+alignnone
+aligncenter
+alignright
+wp-block-button
+wp-caption
+wp-caption-text
+lg:h-12
+rounded-md
+lg:px-6
+lg:text-secondary
+lg:gap-5

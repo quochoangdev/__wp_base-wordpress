@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* 
+ * Custom CSS
+ * Các style tùy chỉnh và ghi đè các class của Tailwind
+ */
+
+ @layer components {
+  /* Thêm các component tùy chỉnh ở đây */
+}
+
+@layer utilities {
+  /* Thêm các utility tùy chỉnh ở đây */
+}

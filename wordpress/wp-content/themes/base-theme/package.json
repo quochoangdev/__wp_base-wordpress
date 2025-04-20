@@ -1,0 +1,21 @@
+{
+  "name": "base-theme",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "watch": "tailwindcss -i ./resources/css/app.css -o ./dist/css/app.css --watch",
+    "build": "tailwindcss -i ./resources/css/app.css -o ./dist/css/app.css --minify",
+    "editor": "tailwindcss -i ./resources/css/editor-style.css -o ./dist/css/editor-style.css --minify"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "postcss-import": "^16.1.0",
+    "postcss-nested": "^7.0.2",
+    "postcss-nested-ancestors": "^3.0.0",
+    "tailwindcss": "^3.4.17"
+  },
+  "description": ""
+}

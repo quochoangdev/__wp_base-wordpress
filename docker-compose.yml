@@ -1,0 +1,56 @@
+services:
+  wordpress:
+    container_name: ${WORDPRESS_CONTAINER_NAME}
+    image: wordpress:6.8
+    ports:
+      - ${WORDPRESS_PORT}:80
+    restart: always
+    env_file:
+      - .env
+    environment:
+      - WORDPRESS_DB_HOST=${DB_HOST}
+      - WORDPRESS_DB_USER=${DB_USER}
+      - WORDPRESS_DB_PASSWORD=${DB_PASSWORD}
+      - WORDPRESS_DB_NAME=${DB_NAME}
+
+      - WORDPRESS_DEBUG=true
+      - WORDPRESS_DEBUG_LOG=true
+      - WORDPRESS_DEBUG_DISPLAY=true
+      - SCRIPT_DEBUG=true
+
+      - PHP_MEMORY_LIMIT=256M
+      - PHP_UPLOAD_MAX_FILESIZE=64M
+      - PHP_POST_MAX_SIZE=64M
+      - PHP_MAX_EXECUTION_TIME=300
+    networks:
+      - docker-network
+    volumes:
+      - wordpress-source:/var/www/html
+      - ./wordpress/wp-content/themes:/var/www/html/wp-content/themes
+      - ./wordpress/wp-content/plugins:/var/www/html/wp-content/plugins
+      - ./wordpress/wp-content/uploads:/var/www/html/wp-content/uploads
+
+  db:
+    container_name: ${DATABASE_CONTAINER_NAME}
+    image: mysql:8.0
+    ports:
+      - ${DATABASE_PORT}:3306
+    restart: always
+    env_file:
+      - .env
+    environment:
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+    networks:
+      - docker-network
+    volumes:
+      - wordpress-db:/var/lib/mysql
+networks:
+  docker-network:
+    driver: bridge
+
+volumes:
+  wordpress-source:
+  wordpress-db:
