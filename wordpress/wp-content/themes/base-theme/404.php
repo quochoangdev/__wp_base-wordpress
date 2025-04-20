@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
 
 <head>
@@ -28,4 +28,4 @@
 	</div>
 </body>
 
-</html> -->
+</html>

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Template Name: Contact
  *
@@ -9,6 +8,6 @@
 get_header();
 ?>
 
-<h1>contact</h1>
+<h1 class="text-center font-bold text-blue-500">contact</h1>
 
 <?php get_footer(); ?>
