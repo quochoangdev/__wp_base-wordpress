@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fictional University</title>
+  <title>Base Theme</title>
   <?php wp_head(); ?>
 </head>
 

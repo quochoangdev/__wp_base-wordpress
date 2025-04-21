@@ -1,5 +1,5 @@
 <?php
-// log value
+// ---------- log value ----------
 if (!function_exists('log_')) {
   function log_($value)
   {
@@ -9,7 +9,7 @@ if (!function_exists('log_')) {
   }
 }
 
-// get custom excerpt
+// ---------- get custom excerpt ----------
 function get_custom_excerpt($length = 40)
 {
   // Tạo function ẩn danh (closure)
