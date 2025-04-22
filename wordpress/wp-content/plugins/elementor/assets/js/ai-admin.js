@@ -1,4 +1,4 @@
-/*! elementor - v3.28.0 - 01-04-2025 */
+/*! elementor - v3.28.0 - 22-04-2025 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -11203,7 +11203,7 @@ var _default = exports["default"] = View;
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports.LOCATIONS = exports.IMAGE_PROMPT_SETTINGS = exports.IMAGE_PROMPT_CATEGORIES = exports.IMAGE_PLACEHOLDERS_HOSTS = exports.IMAGE_ASPECT_RATIO = void 0;
+exports.LOCATIONS = exports.IMAGE_PROMPT_SETTINGS = exports.IMAGE_PROMPT_CATEGORIES = exports.IMAGE_PLACEHOLDERS_HOSTS = exports.IMAGE_ASPECT_RATIO = exports.FEATURE_IDENTIFIER = void 0;
 var _i18n = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 var LOCATIONS = exports.LOCATIONS = {
   RESIZE: 'resize',
@@ -11227,6 +11227,9 @@ var IMAGE_PROMPT_SETTINGS = exports.IMAGE_PROMPT_SETTINGS = {
   IMAGE_ZOOM: 'zoom',
   IMAGE_UPSCALE: 'upscale_to',
   IMAGE_BACKGROUND_COLOR: 'background_color'
+};
+var FEATURE_IDENTIFIER = exports.FEATURE_IDENTIFIER = {
+  ISOLATE_OBJECT: 'isolate-object'
 };
 var IMAGE_PROMPT_CATEGORIES = exports.IMAGE_PROMPT_CATEGORIES = {
   '': {
@@ -13947,6 +13950,7 @@ var _useImageSize2 = _interopRequireDefault(__webpack_require__(/*! ../../hooks/
 var _requestsIds = __webpack_require__(/*! ../../../../context/requests-ids */ "../modules/ai/assets/js/editor/context/requests-ids.js");
 var _usePromptSettings2 = _interopRequireWildcard(__webpack_require__(/*! ../../hooks/use-prompt-settings */ "../modules/ai/assets/js/editor/pages/form-media/hooks/use-prompt-settings.js"));
 var _colorPicker = _interopRequireDefault(__webpack_require__(/*! ../../components/color-picker */ "../modules/ai/assets/js/editor/pages/form-media/components/color-picker.js"));
+var _constants = __webpack_require__(/*! ../../constants */ "../modules/ai/assets/js/editor/pages/form-media/constants/index.js");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 var IsolateObject = function IsolateObject() {
@@ -13981,7 +13985,8 @@ var IsolateObject = function IsolateObject() {
     setGenerate();
     send({
       image: editImage,
-      settings: (0, _defineProperty2.default)((0, _defineProperty2.default)({}, _usePromptSettings2.IMAGE_RATIO, generatedAspectRatio), _usePromptSettings2.IMAGE_BACKGROUND_COLOR, generatedBgColor)
+      settings: (0, _defineProperty2.default)((0, _defineProperty2.default)({}, _usePromptSettings2.IMAGE_RATIO, generatedAspectRatio), _usePromptSettings2.IMAGE_BACKGROUND_COLOR, generatedBgColor),
+      featureIdentifier: _constants.FEATURE_IDENTIFIER.ISOLATE_OBJECT
     });
   };
   return /*#__PURE__*/_react.default.createElement(_view.default, null, /*#__PURE__*/_react.default.createElement(_view.default.Panel, null, /*#__PURE__*/_react.default.createElement(_view.default.BackButton, null), /*#__PURE__*/_react.default.createElement(_view.default.PanelHeading, {

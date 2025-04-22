@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Google for WooCommerce 2.9.11\n"
+"Project-Id-Version: Google for WooCommerce 2.9.12\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/google-listings-and-ads\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-04-15T04:21:41+00:00\n"
+"POT-Creation-Date: 2025-04-22T10:54:14+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: google-listings-and-ads\n"
@@ -294,8 +294,8 @@ msgstr ""
 msgid "Error retrieving accounts: %s"
 msgstr ""
 
-#: src/API/Google/Ads.php:358
-msgid "Merchant link is not available to accept"
+#: src/API/Google/Ads.php:354
+msgid "Unable to find the pending approval link sent from the Merchant Center account"
 msgstr ""
 
 #. translators: %s: current date time.
@@ -468,7 +468,7 @@ msgstr ""
 
 #: src/API/Google/Middleware.php:97
 #: src/API/Google/SiteVerification.php:59
-#: src/MerchantCenter/AccountService.php:450
+#: src/MerchantCenter/AccountService.php:452
 msgid "Invalid site URL."
 msgstr ""
 
@@ -511,16 +511,28 @@ msgid "Error linking account"
 msgstr ""
 
 #. translators: 1: current date in the format Y-m-d
-#: src/API/Google/Middleware.php:509
+#: src/API/Google/Middleware.php:534
 msgid "Account %1$s"
 msgstr ""
 
-#: src/API/Google/Middleware.php:586
+#: src/API/Google/Middleware.php:611
 msgid "Invalid response authenticating partner app."
 msgstr ""
 
-#: src/API/Google/Middleware.php:596
+#: src/API/Google/Middleware.php:621
 msgid "Error authenticating Google Partner APP."
+msgstr ""
+
+#: src/API/Google/Middleware.php:638
+msgid "Merchant ID must be set before updating in SDI."
+msgstr ""
+
+#: src/API/Google/Middleware.php:660
+msgid "Invalid response when updating merchant account in Google Partner APP."
+msgstr ""
+
+#: src/API/Google/Middleware.php:668
+msgid "Error updating merchant account in Google Partner APP."
 msgstr ""
 
 #: src/API/Google/Query/AdsQuery.php:81
@@ -1540,50 +1552,50 @@ msgstr ""
 msgid "Shipping"
 msgstr ""
 
-#: src/MerchantCenter/AccountService.php:186
+#: src/MerchantCenter/AccountService.php:185
 msgid "Attempting invalid URL switch."
 msgstr ""
 
-#: src/MerchantCenter/AccountService.php:209
+#: src/MerchantCenter/AccountService.php:208
 msgid "Attempting invalid claim overwrite."
 msgstr ""
 
 #. translators: 1: is a string representing an unknown step name
-#: src/MerchantCenter/AccountService.php:365
+#: src/MerchantCenter/AccountService.php:367
 msgid "Unknown merchant account creation step %1$s"
 msgstr ""
 
-#: src/MerchantCenter/AccountService.php:397
+#: src/MerchantCenter/AccountService.php:399
 msgid "Unable to claim website URL with this Merchant Center Account."
 msgstr ""
 
 #. translators: 1: is a numeric account ID
-#: src/MerchantCenter/AccountService.php:429
+#: src/MerchantCenter/AccountService.php:431
 msgid "Merchant Center account already connected: %d"
 msgstr ""
 
 #. translators: 1: is a website URL (without the protocol)
-#: src/MerchantCenter/AccountService.php:478
+#: src/MerchantCenter/AccountService.php:480
 msgid "This Merchant Center account already has a verified and claimed URL, %1$s"
 msgstr ""
 
-#: src/MerchantCenter/AccountService.php:566
+#: src/MerchantCenter/AccountService.php:571
 msgid "No stored nonce found in the database, skip updating auth status."
 msgstr ""
 
-#: src/MerchantCenter/AccountService.php:572
+#: src/MerchantCenter/AccountService.php:577
 msgid "Nonce is not provided, skip updating auth status."
 msgstr ""
 
-#: src/MerchantCenter/AccountService.php:579
+#: src/MerchantCenter/AccountService.php:584
 msgid "Nonces mismatch, skip updating auth status."
 msgstr ""
 
-#: src/MerchantCenter/MerchantCenterService.php:291
+#: src/MerchantCenter/MerchantCenterService.php:292
 msgid "No contact information."
 msgstr ""
 
-#: src/MerchantCenter/MerchantCenterService.php:292
+#: src/MerchantCenter/MerchantCenterService.php:293
 msgid "Add store contact information"
 msgstr ""
 
@@ -2454,11 +2466,15 @@ msgid "Note: The currency set in your Google Ads account is <adsCurrency />, whi
 msgstr ""
 
 #: js/build/commons.js:10
+msgid "Grant access"
+msgstr ""
+
+#: js/build/commons.js:10
 msgid "Unable to enable new product sync."
 msgstr ""
 
 #: js/build/commons.js:10
-msgid "<p>We will soon transition to a new and improved method for synchronizing product data with Google.</p><enableButton>Get early access</enableButton>"
+msgid "Start using the new and improved method for synchronizing product data with Google."
 msgstr ""
 
 #. translators: 1: current page number 2: total number of pages
@@ -2804,7 +2820,7 @@ msgid "Connecting to a different Google account, please wait…"
 msgstr ""
 
 #: js/build/commons.js:35
-msgid "Unable to connect to a different Google account. Please try again later."
+msgid "Unable to get the URL for Google authorization. Please refresh the page to restart the onboarding."
 msgstr ""
 
 #: js/build/commons.js:35
@@ -2819,6 +2835,18 @@ msgstr ""
 #: js/build/commons.js:57
 #: js/build/commons.js:97
 msgid "Connect"
+msgstr ""
+
+#: js/build/commons.js:35
+msgid "Access was denied. Please make sure to grant Google access to your WooCommerce store to continue."
+msgstr ""
+
+#: js/build/commons.js:35
+msgid "There was an error granting Google access to your WooCommerce store. Please try again, or contact support for further help."
+msgstr ""
+
+#: js/build/commons.js:35
+msgid "Granting Google access to your WooCommerce store is required in order to synchronize product data with Google."
 msgstr ""
 
 #: js/build/commons.js:35
@@ -2922,6 +2950,10 @@ msgstr ""
 
 #: js/build/commons.js:35
 msgid "I accept the terms and conditions of <linkMerchant>Merchant Center</linkMerchant> and <linkAds>Google Ads</linkAds>"
+msgstr ""
+
+#: js/build/commons.js:35
+msgid "You will be prompted to give WooCommerce access to your Google account and Google to your WooCommerce account. Please approve all access to give WooCommerce and Google all required permissions. <link>Read more</link>"
 msgstr ""
 
 #: js/build/commons.js:35
@@ -3108,30 +3140,6 @@ msgid "Connect to existing Merchant Center account"
 msgstr ""
 
 #: js/build/commons.js:60
-msgid "Grant access"
-msgstr ""
-
-#: js/build/commons.js:60
-msgid "Google has been granted access to fetch your product data."
-msgstr ""
-
-#: js/build/commons.js:60
-msgid "There was an issue granting access to Google for fetching your products."
-msgstr ""
-
-#: js/build/commons.js:60
-msgid "Disabling the new Product Sync feature, please wait…"
-msgstr ""
-
-#: js/build/commons.js:60
-msgid "Unable to disable new product sync. Please try again later."
-msgstr ""
-
-#: js/build/commons.js:60
-msgid "Disable product data fetch"
-msgstr ""
-
-#: js/build/commons.js:60
 msgid "Help"
 msgstr ""
 
@@ -3144,7 +3152,6 @@ msgid "Before you start the migration…"
 msgstr ""
 
 #: js/build/commons.js:60
-#: js/build/onboarding.js:1
 #: js/build/settings.js:1
 msgid "Never mind"
 msgstr ""
@@ -4677,76 +4684,6 @@ msgstr ""
 msgid "Create a campaign"
 msgstr ""
 
-#: js/build/onboarding.js:1
-#: js/build/settings.js:1
-msgid "Disconnect all accounts"
-msgstr ""
-
-#: js/build/onboarding.js:1
-#: js/build/settings.js:1
-msgid "Yes, I want to disconnect all my accounts."
-msgstr ""
-
-#: js/build/onboarding.js:1
-#: js/build/settings.js:1
-msgid "I understand that I am disconnecting any WordPress.com account, Google account, Google Merchant Center account and Google Ads account connected to this extension."
-msgstr ""
-
-#: js/build/onboarding.js:1
-#: js/build/settings.js:1
-msgid "Any active product listings will continue to show on Google. They can be managed, edited, or deleted manually from Google Merchant Center (merchants.google.com)."
-msgstr ""
-
-#: js/build/onboarding.js:1
-#: js/build/settings.js:1
-msgid "Any ongoing campaigns will continue to run. They can be managed, edited, or deleted manually from Google Ads (ads.google.com)."
-msgstr ""
-
-#: js/build/onboarding.js:1
-#: js/build/settings.js:1
-msgid "Disconnect Google Ads account"
-msgstr ""
-
-#: js/build/onboarding.js:1
-#: js/build/settings.js:1
-msgid "Disconnect Google Ads Account"
-msgstr ""
-
-#: js/build/onboarding.js:1
-#: js/build/settings.js:1
-msgid "Yes, I want to disconnect my Google Ads account."
-msgstr ""
-
-#: js/build/onboarding.js:1
-#: js/build/settings.js:1
-msgid "I understand that I am disconnecting my Google Ads account from this WooCommerce extension."
-msgstr ""
-
-#: js/build/onboarding.js:1
-#: js/build/settings.js:1
-msgid "Some configurations for Google Ads created through WooCommerce may be lost. This cannot be undone."
-msgstr ""
-
-#: js/build/onboarding.js:1
-#: js/build/settings.js:1
-msgid "Disable data fetching"
-msgstr ""
-
-#: js/build/onboarding.js:1
-#: js/build/settings.js:1
-msgid "Yes, I want to disable the data fetching feature."
-msgstr ""
-
-#: js/build/onboarding.js:1
-#: js/build/settings.js:1
-msgid "I understand that I am disabling the data fetching feature from this WooCommerce extension."
-msgstr ""
-
-#: js/build/onboarding.js:1
-#: js/build/settings.js:1
-msgid "Any ongoing campaigns and configuration will continue to run. They will be pushed to Google as in the previous versions of this extension."
-msgstr ""
-
 #: js/build/product-feed.js:1
 msgid "Type"
 msgstr ""
@@ -5328,6 +5265,50 @@ msgstr ""
 
 #: js/build/settings.js:1
 msgid "A WordPress.com account, Google account, Google Merchant Center account, and Google Ads account are required to use this extension in WooCommerce."
+msgstr ""
+
+#: js/build/settings.js:1
+msgid "Disconnect all accounts"
+msgstr ""
+
+#: js/build/settings.js:1
+msgid "Yes, I want to disconnect all my accounts."
+msgstr ""
+
+#: js/build/settings.js:1
+msgid "I understand that I am disconnecting any WordPress.com account, Google account, Google Merchant Center account and Google Ads account connected to this extension."
+msgstr ""
+
+#: js/build/settings.js:1
+msgid "Any active product listings will continue to show on Google. They can be managed, edited, or deleted manually from Google Merchant Center (merchants.google.com)."
+msgstr ""
+
+#: js/build/settings.js:1
+msgid "Any ongoing campaigns will continue to run. They can be managed, edited, or deleted manually from Google Ads (ads.google.com)."
+msgstr ""
+
+#: js/build/settings.js:1
+msgid "Disconnect Google Ads account"
+msgstr ""
+
+#: js/build/settings.js:1
+msgid "Disconnect Google Ads Account"
+msgstr ""
+
+#: js/build/settings.js:1
+msgid "Yes, I want to disconnect my Google Ads account."
+msgstr ""
+
+#: js/build/settings.js:1
+msgid "I understand that I am disconnecting my Google Ads account from this WooCommerce extension."
+msgstr ""
+
+#: js/build/settings.js:1
+msgid "Some configurations for Google Ads created through WooCommerce may be lost. This cannot be undone."
+msgstr ""
+
+#: js/build/settings.js:1
+msgid "Google has been granted access to fetch your product data."
 msgstr ""
 
 #: js/build/settings.js:1

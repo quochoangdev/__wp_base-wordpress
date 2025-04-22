@@ -11,4 +11,13 @@ if (function_exists('acf_add_options_page')) {
   ]);
 }
 
+// ---------- Add Menu ----------
+function add_menu()
+{
+  add_theme_support('menus');
+  register_nav_menu('themeLocationOne', 'Theme Footer One');
+  register_nav_menu('themeLocationTwo', 'Theme Footer Two');
+}
+add_action('after_setup_theme', 'add_menu');
+
 ?>

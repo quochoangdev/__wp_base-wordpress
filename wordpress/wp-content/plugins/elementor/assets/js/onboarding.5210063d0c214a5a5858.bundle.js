@@ -1,4 +1,4 @@
-/*! elementor - v3.28.0 - 01-04-2025 */
+/*! elementor - v3.28.0 - 22-04-2025 */
 "use strict";
 (self["webpackChunkelementor"] = self["webpackChunkelementor"] || []).push([["onboarding"],{
 
@@ -351,7 +351,9 @@ function Card(_ref) {
     text = _ref.text,
     link = _ref.link,
     name = _ref.name,
-    clickAction = _ref.clickAction;
+    clickAction = _ref.clickAction,
+    _ref$target = _ref.target,
+    target = _ref$target === void 0 ? '_self' : _ref$target;
   var onClick = function onClick() {
     elementorCommon.events.dispatchEvent({
       event: 'starting canvas click',
@@ -366,7 +368,7 @@ function Card(_ref) {
     }
   };
   return /*#__PURE__*/_react.default.createElement("a", {
-    target: "_self",
+    target: target,
     className: "e-onboarding__card",
     href: link,
     onClick: onClick
@@ -384,7 +386,8 @@ Card.propTypes = {
   text: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  clickAction: PropTypes.func
+  clickAction: PropTypes.func,
+  target: PropTypes.string
 };
 
 /***/ }),
@@ -1028,7 +1031,7 @@ function ProgressBar() {
   if (!elementorAppConfig.onboarding.helloActivated) {
     progressBarItemsConfig.push({
       id: 'hello',
-      title: __('Hello Theme', 'elementor'),
+      title: __('Hello Biz Theme', 'elementor'),
       route: 'hello'
     });
   }
@@ -1586,7 +1589,7 @@ function GoodToGo() {
     className: "e-onboarding__page-content-section-title"
   }, elementorAppConfig.onboarding.experiment ? __('Welcome aboard! What\'s next?', 'elementor') : __('That\'s a wrap! What\'s next?', 'elementor')), /*#__PURE__*/_react.default.createElement("div", {
     className: "e-onboarding__page-content-section-text"
-  }, __('There are two ways to get started with Elementor:', 'elementor')), /*#__PURE__*/_react.default.createElement(_grid.default, {
+  }, __('There are three ways to get started with Elementor:', 'elementor')), /*#__PURE__*/_react.default.createElement(_grid.default, {
     container: true,
     alignItems: "center",
     justify: "space-between",
@@ -1608,6 +1611,13 @@ function GoodToGo() {
       location.href = kitLibraryLink;
       location.reload();
     }
+  }), /*#__PURE__*/_react.default.createElement(_card.default, {
+    name: "site-planner",
+    image: elementorCommon.config.urls.assets + 'images/app/onboarding/Site_Planner.svg',
+    imageAlt: __('Click here to go to Elementor\'s Site Planner', 'elementor'),
+    text: __('Create a professional site in minutes using AI', 'elementor'),
+    link: elementorAppConfig.onboarding.urls.sitePlanner,
+    target: "_blank"
   })), /*#__PURE__*/_react.default.createElement(_footerButtons.default, {
     skipButton: _objectSpread(_objectSpread({}, skipButton), {}, {
       target: '_self'
@@ -1673,7 +1683,7 @@ function HelloTheme() {
     _useState8 = (0, _slicedToArray2.default)(_useState7, 2),
     activeTimeouts = _useState8[0],
     setActiveTimeouts = _useState8[1],
-    continueWithHelloThemeText = state.isHelloThemeActivated ? __('Next', 'elementor') : __('Continue with Hello Theme', 'elementor'),
+    continueWithHelloThemeText = state.isHelloThemeActivated ? __('Next', 'elementor') : __('Continue with Hello Biz Theme', 'elementor'),
     _useState9 = (0, _react.useState)(continueWithHelloThemeText),
     _useState10 = (0, _slicedToArray2.default)(_useState9, 2),
     actionButtonText = _useState10[0],
@@ -1745,7 +1755,7 @@ function HelloTheme() {
     setNoticeState({
       type: 'error',
       icon: 'eicon-warning',
-      message: __('There was a problem installing Hello Theme.', 'elementor')
+      message: __('There was a problem installing Hello Biz Theme.', 'elementor')
     });
     resetScreenContent();
   };
@@ -1765,7 +1775,7 @@ function HelloTheme() {
       setIsInstalling(true);
     }
     wp.updates.ajax('install-theme', {
-      slug: 'hello-elementor',
+      slug: 'hello-biz',
       success: function success() {
         return activateHelloTheme();
       },
@@ -1879,7 +1889,7 @@ function HelloTheme() {
         setNoticeState({
           type: 'error',
           icon: 'eicon-warning',
-          message: __('There was a problem activating Hello Theme.', 'elementor')
+          message: __('There was a problem activating Hello Biz Theme.', 'elementor')
         });
 
         // Clear any active timeouts for changing the action button text during installation.
@@ -1891,14 +1901,14 @@ function HelloTheme() {
     pageId: pageId,
     nextStep: nextStep
   }, /*#__PURE__*/_react.default.createElement(_pageContentLayout.default, {
-    image: elementorCommon.config.urls.assets + 'images/app/onboarding/Illustration_Hello.svg',
+    image: elementorCommon.config.urls.assets + 'images/app/onboarding/Illustration_Hello_Biz.svg',
     title: __('Every site starts with a theme.', 'elementor'),
     actionButton: actionButton,
     skipButton: skipButton,
     noticeState: noticeState
-  }, /*#__PURE__*/_react.default.createElement("p", null, __('Hello is Elementor\'s official blank canvas theme optimized to build your website exactly the way you want.', 'elementor')), !elementorAppConfig.onboarding.experiment && /*#__PURE__*/_react.default.createElement("p", null, __('Here\'s why:', 'elementor')), /*#__PURE__*/_react.default.createElement("ul", {
+  }, /*#__PURE__*/_react.default.createElement("p", null, __('Hello Biz by Elementor helps you launch your professional business website - fast.', 'elementor')), !elementorAppConfig.onboarding.experiment && /*#__PURE__*/_react.default.createElement("p", null, __('Here\'s why:', 'elementor')), /*#__PURE__*/_react.default.createElement("ul", {
     className: "e-onboarding__feature-list"
-  }, /*#__PURE__*/_react.default.createElement("li", null, __('Light-weight and fast loading', 'elementor')), /*#__PURE__*/_react.default.createElement("li", null, __('Great for SEO', 'elementor')), /*#__PURE__*/_react.default.createElement("li", null, __('Already being used by 1M+ web creators', 'elementor')))), /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("li", null, __('Get online faster', 'elementor')), /*#__PURE__*/_react.default.createElement("li", null, __('Lightweight and fast loading', 'elementor')), /*#__PURE__*/_react.default.createElement("li", null, __('Great for SEO', 'elementor')))), /*#__PURE__*/_react.default.createElement("div", {
     className: "e-onboarding__footnote"
   }, '* ' + __('You can switch your theme later on', 'elementor')));
 }
@@ -2690,4 +2700,4 @@ var setSelectedFeatureList = exports.setSelectedFeatureList = function setSelect
 /***/ })
 
 }]);
-//# sourceMappingURL=onboarding.120a44527e5a7209a8e4.bundle.js.map
+//# sourceMappingURL=onboarding.5210063d0c214a5a5858.bundle.js.map
