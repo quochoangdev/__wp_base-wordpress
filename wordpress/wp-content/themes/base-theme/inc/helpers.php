@@ -9,6 +9,18 @@ if (!function_exists('log_')) {
   }
 }
 
+// ---------- log form value ----------
+// console.log([...formData.entries()]);
+if (!function_exists('log_form_')) {
+  function log_form_ ($form)
+  {
+    $formData = [...$form->get_data()];
+    echo '<pre>';
+    print_r($formData);
+    echo '</pre>';
+  }
+}
+
 // ---------- get custom excerpt ----------
 function get_custom_excerpt($length = 40)
 {
