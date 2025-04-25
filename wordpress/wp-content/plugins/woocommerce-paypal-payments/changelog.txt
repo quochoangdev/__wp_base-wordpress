@@ -1,5 +1,8 @@
 *** Changelog ***
 
+= 3.0.5 - 2025-04-23 =
+* Fix - Onboarding screen blank when WooPayments plugin is active #3312
+
 = 3.0.3 - 2025-04-08 =
 * Fix - BN code was set before the installation path was initialized #3309
 * Fix - Things to do next referenced Apple Pay while in branded-only mode #3308
@@ -21,7 +24,7 @@
 
 = 3.0.1 - 2025-03-26 =
 * Enhancement - Include Fastlane meta on homepage #3151
-* Enhancement - Include Branded-only plugin configuration for certain installation paths 
+* Enhancement - Include Branded-only plugin configuration for certain installation paths
 * Enhancement - Include UI status in system report #3248
 * Enhancement - Minor enhancements in new UI scrolling & highlighting behavior #3240
 * Fix - "Warning: Class 'WooCommerce\PayPalCommerce\Vendor\Stringable' not found" after 3.0.0 update #3235

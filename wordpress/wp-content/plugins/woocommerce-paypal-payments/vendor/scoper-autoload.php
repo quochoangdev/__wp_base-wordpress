@@ -32,10 +32,10 @@ if (!function_exists('humbug_phpscoper_expose_class')) {
 humbug_phpscoper_expose_class('FlattedString', 'WooCommerce\PayPalCommerce\Vendor\FlattedString');
 humbug_phpscoper_expose_class('Flatted', 'WooCommerce\PayPalCommerce\Vendor\Flatted');
 humbug_phpscoper_expose_class('ComposerAutoloaderInit2fa610ed883c0868838d3008b7127cbf', 'WooCommerce\PayPalCommerce\Vendor\ComposerAutoloaderInit2fa610ed883c0868838d3008b7127cbf');
-humbug_phpscoper_expose_class('Attribute', 'WooCommerce\PayPalCommerce\Vendor\Attribute');
-humbug_phpscoper_expose_class('Stringable', 'WooCommerce\PayPalCommerce\Vendor\Stringable');
 humbug_phpscoper_expose_class('UnhandledMatchError', 'WooCommerce\PayPalCommerce\Vendor\UnhandledMatchError');
 humbug_phpscoper_expose_class('PhpToken', 'WooCommerce\PayPalCommerce\Vendor\PhpToken');
+humbug_phpscoper_expose_class('Stringable', 'WooCommerce\PayPalCommerce\Vendor\Stringable');
+humbug_phpscoper_expose_class('Attribute', 'WooCommerce\PayPalCommerce\Vendor\Attribute');
 humbug_phpscoper_expose_class('ValueError', 'WooCommerce\PayPalCommerce\Vendor\ValueError');
 
 // Function aliases. For more information see:
