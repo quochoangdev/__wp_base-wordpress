@@ -1,14 +1,20 @@
-<?php 
-  // nav menu
-  $nav_menu_class = '';
-  $ul_menu_class = '';
-  $li_item_class = '';
-  // sub menu
-  $sub_ul_menu_class = '';
-  $sub_li_item_class = '';
+<?php
+// nav menu
+$nav_menu_class = '';
+$ul_menu_class = '';
+$li_item_class = 'bg-red-500 p-5 m-5';
 
-  // a item
-  $a_item_class = 'text-red-500';
+
+// echo '<pre>';
+// print_r($tmp);
+// echo '</pre>';
+
+// sub menu
+$sub_ul_menu_class = '';
+$sub_li_item_class = '';
+
+// a item
+$a_item_class = '';
 ?>
 
 <?php echo wp_nav_menu(
@@ -19,13 +25,14 @@
     'menu_class' => 'cs-ul-menu container px-4 mx-auto flex justify-between items-center h-full' . ' ' . $ul_menu_class,
     'walker' => new WPDocs_Walker_Nav_Menu(array(
       'menu_ul_class' => 'hidden absolute opacity-0 transition-all duration-300 ease-in-out transform scale-95 ' . $sub_ul_menu_class,
-      'menu_li_class' => '' . $sub_li_item_class,
-      'menu_a_class'  => 'text-base font-normal' . ' ' . $a_item_class
+      'menu_li_class' => '' . ' ' . $sub_li_item_class,
+      'menu_a_class'  => '' . ' ' . $a_item_class
     )),
   )
 );
 ?>
 <!-- ----------  Custom Walker Class  ---------- -->
+<?php $tmp_li_item_class = implode(',', array_map(fn($c) => "'" . $c . "'", array_filter(explode(' ', trim('relative ' . $li_item_class))))); ?>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const showDelay = 5;
@@ -34,12 +41,11 @@
     const cs_li_menu = document.querySelectorAll('.cs-ul-menu > li');
 
     cs_li_menu.forEach(menu => {
-      menu.classList.add('relative');
+      menu.classList.add(<?php echo $tmp_li_item_class; ?>);
       let timeout;
-      
-      // Sử dụng mouseenter thay vì mouseover
+
       menu.addEventListener('mouseenter', function() {
-        clearTimeout(timeout); // Hủy timeout nếu có
+        clearTimeout(timeout);
         const ul = menu.querySelector('ul');
         if (ul) {
           ul.classList.remove('hidden');
@@ -50,14 +56,13 @@
         }
       });
 
-      // Sử dụng mouseleave thay vì mouseout
       menu.addEventListener('mouseleave', function() {
         const ul = menu.querySelector('ul');
         if (ul) {
           timeout = setTimeout(() => {
             ul.classList.remove('opacity-100', 'scale-100');
             ul.classList.add('opacity-0', 'scale-95');
-            
+
             setTimeout(() => {
               ul.classList.add('hidden');
             }, hideDelay);
