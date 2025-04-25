@@ -29,16 +29,16 @@ function add_menu()
 }
 add_action('after_setup_theme', 'add_menu');
 
-// function ten_function_cua_ban() {
-// 	ob_start();
-// 	?>
-// 	<div class="container">
-// 		<h1>Hello World</h1>
-// 	</div>
-// 	<?php
-// 	return ob_get_clean();
-// }
-// add_action( 'hook_name', 'ten_function_cua_ban', priority );
+function ten_function_cua_ban() {
+	ob_start();
+	?>
+	<div class="container">
+		<h1>Hello World</h1>
+	</div>
+	<?php
+	return ob_get_clean();
+}
+add_action( 'hook_name', 'ten_function_cua_ban', 10 );
 
 
 
