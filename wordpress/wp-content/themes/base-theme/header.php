@@ -10,7 +10,9 @@
 
 <body>
   <header>
-    <h1 class="text-center font-bold text-red-500">
-      Header
+    <h1 class="text-center font-bold">
+
+      <?php get_template_part('template-custom/wp_nav_menu'); ?>
+
     </h1>
   </header>

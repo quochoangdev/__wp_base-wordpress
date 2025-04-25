@@ -8,27 +8,24 @@
  * @version     9.6.0
  */
 
-if (!defined('ABSPATH')) {
-  exit();
+if (! defined('ABSPATH')) {
+  exit;
 }
 
-if ($related_products): ?>
+if ($related_products) : ?>
 
-  <section class="related products mb-20">
+  <section class="related products mb-5 lg:mb-20">
     <?php
-    $heading = apply_filters(
-      'woocommerce_product_related_products_heading',
-      __('Related products', 'woocommerce')
-    );
+    $heading = apply_filters('woocommerce_product_related_products_heading', __('Related products', 'woocommerce'));
 
-    if ($heading): ?>
-      <h2><?php echo esc_html($heading); ?></h2>
-    <?php endif;
+    if ($heading) :
     ?>
+      <h2><?php echo esc_html($heading); ?></h2>
+    <?php endif; ?>
 
     <div class="swiper related-products-swiper">
       <div class="swiper-wrapper">
-        <?php foreach ($related_products as $related_product): ?>
+        <?php foreach ($related_products as $related_product) : ?>
           <div class="swiper-slide">
             <?php
             $post_object = get_post($related_product->get_id());
@@ -54,7 +51,8 @@ if ($related_products): ?>
       </div>
     </div>
   </section>
-<?php endif;
+<?php
+endif;
 
 wp_reset_postdata();
 ?>
@@ -70,6 +68,11 @@ wp_reset_postdata();
       margin-bottom: 30px;
       text-transform: uppercase;
       width: fit-content;
+
+      @media screen and (max-width: 1024px) {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
 
       &::before {
         position: absolute;
@@ -90,7 +93,11 @@ wp_reset_postdata();
       height: 46px;
       border: 1px solid #DCDCDC;
       border-radius: 50%;
-      background-color: #fff;
+      background-color: rgba(255, 255, 255, 0.8);
+
+      &:hover {
+        background-color: #fff;
+      }
 
       &::after {
         content: none;
@@ -105,11 +112,11 @@ wp_reset_postdata();
     }
 
     .swiper-button-next {
-      right: 0;
+      right: 2px;
     }
 
     .swiper-button-prev {
-      left: 0;
+      left: 2px;
     }
 
     .swiper-slide {
@@ -125,34 +132,29 @@ wp_reset_postdata();
     const swiper = new Swiper('.related-products-swiper', {
       direction: 'horizontal',
       loop: true,
-      slidesPerView: 5,
+      slidesPerView: 2,
       spaceBetween: 20,
       slidesPerGroup: 1,
 
       // Responsive breakpoints
       breakpoints: {
-        // khi cửa sổ >= 320px
-        320: {
-          slidesPerView: 1,
+        640: {
+          slidesPerView: 2,
           spaceBetween: 10
         },
-        // khi cửa sổ >= 480px
-        480: {
-          slidesPerView: 2,
+        768: {
+          slidesPerView: 3,
           spaceBetween: 15
         },
-        // khi cửa sổ >= 768px
-        768: {
+        1024: {
           slidesPerView: 3,
           spaceBetween: 20
         },
-        // khi cửa sổ >= 992px
-        992: {
+        1280: {
           slidesPerView: 4,
           spaceBetween: 20
         },
-        // khi cửa sổ >= 1200px
-        1200: {
+        1410: {
           slidesPerView: 5,
           spaceBetween: 20
         }
