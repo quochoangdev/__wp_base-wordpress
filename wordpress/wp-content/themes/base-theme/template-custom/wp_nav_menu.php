@@ -1,42 +1,37 @@
 <?php
 // nav menu
-$nav_menu_class = '';
+$nav_menu_class = 'bg-[#23282d]';
 $ul_menu_class = '';
-$li_item_class = 'bg-red-500 p-5 m-5';
-
-
-// echo '<pre>';
-// print_r($tmp);
-// echo '</pre>';
+$li_item_class = '';
 
 // sub menu
-$sub_ul_menu_class = '';
+$sub_ul_menu_class = 'bg-[#23282d]';
 $sub_li_item_class = '';
 
 // a item
-$a_item_class = '';
+$a_item_class = 'text-white hover:bg-[#1c2024]';
 ?>
 
 <?php echo wp_nav_menu(
   array(
     'theme_location' => 'primary',
     'container' => 'nav',
-    'container_class' => 'h-16' . ' ' . $nav_menu_class,
+    'container_class' => 'h-12' . ' ' . $nav_menu_class,
     'menu_class' => 'cs-ul-menu container px-4 mx-auto flex justify-between items-center h-full' . ' ' . $ul_menu_class,
     'walker' => new WPDocs_Walker_Nav_Menu(array(
-      'menu_ul_class' => 'hidden absolute opacity-0 transition-all duration-300 ease-in-out transform scale-95 ' . $sub_ul_menu_class,
-      'menu_li_class' => '' . ' ' . $sub_li_item_class,
-      'menu_a_class'  => '' . ' ' . $a_item_class
+      'menu_ul_class' => 'hidden absolute top-full left-0 opacity-0 transition-all duration-300 ease-in-out transform scale-95 w-[200px]' . ' ' . $sub_ul_menu_class,
+      'menu_li_class' => $sub_li_item_class,
+      'menu_a_class'  => 'px-10 py-2 w-full h-full flex items-center justify-center' . ' ' . $a_item_class
     )),
   )
 );
 ?>
 <!-- ----------  Custom Walker Class  ---------- -->
-<?php $tmp_li_item_class = implode(',', array_map(fn($c) => "'" . $c . "'", array_filter(explode(' ', trim('relative ' . $li_item_class))))); ?>
+<?php $tmp_li_item_class = implode(',', array_map(fn($c) => "'" . $c . "'", array_filter(explode(' ', trim('relative h-full ' . $li_item_class))))); ?>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const showDelay = 5;
-    const hideDelay = 200;
+    const showDelay = 10;
+    const hideDelay = 100;
 
     const cs_li_menu = document.querySelectorAll('.cs-ul-menu > li');
 
