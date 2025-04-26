@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @param array $args
  * @param array $args['ids_data']
@@ -45,6 +46,7 @@
     window.history.replaceState({}, '', url);
 
     const productList = document.querySelector('#<?= $ids_data['id_render_ajax'] ?>');
+    console.log(productList);
     if (productList) {
       productList.innerHTML = '<div class="flex items-center justify-center h-full"><div class="w-10 h-10 border-t-2 border-b-2 border-primary rounded-full animate-spin"></div></div>';
 
