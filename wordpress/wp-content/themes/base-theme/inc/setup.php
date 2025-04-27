@@ -29,6 +29,14 @@ function add_menu()
 }
 add_action('after_setup_theme', 'add_menu');
 
+// Enable WooCommerce
+function enable_woocommerce()
+{
+    add_theme_support('woocommerce');
+}
+add_action('after_setup_theme', 'enable_woocommerce');
+
+// ---------- Custom Shortcode ----------
 function ten_function_cua_ban() {
 	ob_start();
 	?>

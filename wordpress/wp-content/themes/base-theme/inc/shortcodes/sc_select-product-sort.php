@@ -1,17 +1,17 @@
 <?php
-// [custom_product_sort_dropdown id_render_ajax="..." id_select_product_sort="..."]
+// [custom_select_product_sort id_render_ajax="..." id_select_product_sort="..."]
 // id_render_ajax: id của div chứa danh sách kết quả tìm kiếm
 // id_select_product_sort: id của select danh mục sản phẩm
 
-// <?php echo do_shortcode('[custom_product_sort_dropdown id_render_ajax="search-id-render-ajax-1" id_select_product_sort="search-id-select-product-sort-1"]'); 
+// <?php echo do_shortcode('[custom_select_product_sort id_render_ajax="search-id-render-ajax-1" id_select_product_sort="search-id-select-product-sort-1"]'); 
 ?>
 <?php
-function custom_product_sort_dropdown_shortcode($atts)
+function custom_select_product_sort_shortcode($atts)
 {
   $atts = shortcode_atts(array(
     'id_render_ajax' => $atts['id_render_ajax'] ?? '',
     'id_select_product_sort' => $atts['id_select_product_sort'] ?? '',
-  ), $atts, 'custom_product_sort_dropdown');
+  ), $atts, 'custom_select_product_sort');
 
   ob_start();
 ?>
@@ -69,6 +69,6 @@ function custom_product_sort_dropdown_shortcode($atts)
 <?php
   return ob_get_clean();
 }
-add_shortcode('custom_product_sort_dropdown', 'custom_product_sort_dropdown_shortcode');
+add_shortcode('custom_select_product_sort', 'custom_select_product_sort_shortcode');
 
 ?>

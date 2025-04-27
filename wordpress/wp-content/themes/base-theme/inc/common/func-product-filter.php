@@ -1,7 +1,7 @@
 <?php
 
 // Using pre_get_posts to filter the products
-add_action('pre_get_posts', function($query) use ($product_filter) {
+add_action('pre_get_posts', function ($query) use ($product_filter) {
     $product_filter = array();
 
     if (isset($_GET['cs-product_cat'])) {
@@ -27,7 +27,7 @@ add_action('pre_get_posts', function($query) use ($product_filter) {
     if (!is_admin() && $query->is_main_query()) {
         $tax_query = array('relation' => 'AND');
         $meta_query = array('relation' => 'AND');
-        
+
         // Set the search filter
         if (isset($product_filter['search'])) {
             $query->set('s', $product_filter['search']);
@@ -39,6 +39,7 @@ add_action('pre_get_posts', function($query) use ($product_filter) {
                 'taxonomy' => 'product_cat',
                 'field' => 'term_id',
                 'terms' => $product_filter['product_cat'],
+                'operator' => 'IN',
             );
         }
 
@@ -75,12 +76,12 @@ add_action('pre_get_posts', function($query) use ($product_filter) {
                 'type' => 'NUMERIC',
             );
         }
-        
+
         // Apply meta query if we have any meta filters
         if (count($meta_query) > 1) { // More than just the 'relation' element
             $query->set('meta_query', $meta_query);
         }
-        
+
         // Sort products
         if (!empty($_GET['orderby'])) {
             switch ($_GET['orderby']) {
@@ -126,7 +127,8 @@ add_action('pre_get_posts', function($query) use ($product_filter) {
 
 // Search by title
 if (!function_exists('haru_search_by_title')) {
-    function haru_search_by_title($search, $wp_query) {
+    function haru_search_by_title($search, $wp_query)
+    {
         if (!empty($search) && !empty($wp_query->query_vars['search_terms'])) {
             global $wpdb;
             $q = $wp_query->query_vars;
