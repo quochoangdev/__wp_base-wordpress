@@ -1,7 +1,10 @@
 <?php
-// [custom_checkbox_product_cat id_render_ajax="..." id_select_product_cat="..."]
 // id_render_ajax: id của div chứa danh sách kết quả tìm kiếm
 // id_select_product_cat: id của select danh mục sản phẩm
+// taxonomy: tên taxonomy
+// cs-query-param: tên query param
+// Ví dụ:
+// [custom_checkbox_product_cat id_render_ajax="..." id_select_product_cat="..." taxonomy="product_brand" cs-query-param="cs-brand"]
 ?>
 <?php
 function custom_checkbox_product_cat_shortcode($atts)
@@ -9,21 +12,21 @@ function custom_checkbox_product_cat_shortcode($atts)
     $atts = shortcode_atts(array(
         'id_render_ajax' => $atts['id_render_ajax'] ?? '',
         'id_checkbox_product_cat' => $atts['id_checkbox_product_cat'] ?? '',
+        // taxonomy: tên taxonomy
+        'taxonomy' => $atts['taxonomy'] ?? '',
+        'cs-query-param' => $atts['cs-query-param'] ?? '',
     ), $atts, 'custom_checkbox_product_cat');
-
     ob_start();
 ?>
-    <!-- Sidebar filter -->
-    <!-- close sidebar filter -->
     <form id="<?= esc_attr($atts['id_checkbox_product_cat']) ?>" class="p-2 lg:p-4 space-x-1 lg:space-y-2">
         <?php
         $terms = get_terms([
-            'taxonomy' => 'product_cat',
+            'taxonomy' => $atts['taxonomy'],
             'hide_empty' => false,
             'parent' => 0,
         ]);
         foreach ($terms as $term) {
-            $selected_categories = isset($_GET['cs-product_cat']) ? explode(',', $_GET['cs-product_cat']) : [];
+            $selected_categories = isset($_GET[$atts['cs-query-param']]) ? explode(',', $_GET[$atts['cs-query-param']]) : [];
             $checked = in_array($term->term_id, $selected_categories) ? 'checked' : '';
             echo '<label class="flex items-center space-x-2 cursor-pointer">
                     <input type="checkbox" name="product_cat[]" value="' . esc_attr($term->term_id) . '" ' . $checked . '>
@@ -33,11 +36,9 @@ function custom_checkbox_product_cat_shortcode($atts)
         ?>
     </form>
     </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const categoryFormMobile = document.querySelector('#<?= esc_attr($atts['id_checkbox_product_cat']) ?>');
-
             categoryFormMobile.addEventListener('change', handleCategoryFilterMobile);
             categoryFormMobile.addEventListener('click', function(e) {
                 if (e.target.type === 'checkbox') {
@@ -54,12 +55,11 @@ function custom_checkbox_product_cat_shortcode($atts)
                         selectedCategories.push(checkbox.value);
                     }
                 });
-
                 const url = new URL(window.location.href);
                 if (selectedCategories.length > 0) {
-                    url.searchParams.set('cs-product_cat', selectedCategories.join(','));
+                    url.searchParams.set('<?= esc_attr($atts['cs-query-param']) ?>', selectedCategories.join(','));
                 } else {
-                    url.searchParams.delete('cs-product_cat');
+                    url.searchParams.delete('<?= esc_attr($atts['cs-query-param']) ?>');
                 }
                 window.history.replaceState({}, '', url);
 
@@ -76,7 +76,6 @@ function custom_checkbox_product_cat_shortcode($atts)
                     });
             }
         });
-
         // document.addEventListener('DOMContentLoaded', function() {
         //     const allCheckboxes = document.querySelectorAll('.bg-light-gray input[type="checkbox"]');
         //     allCheckboxes.forEach(function(checkbox) {
@@ -109,7 +108,6 @@ function custom_checkbox_product_cat_shortcode($atts)
         //             sidebarContent.classList.add('-translate-x-full');
         //         }
         //     });
-
         //     document.addEventListener('click', function(e) {
         //         const filterButton = e.target.closest('#show-sidebar-filter-mobile');
 
@@ -126,7 +124,6 @@ function custom_checkbox_product_cat_shortcode($atts)
         //     });
         // });
     </script>
-
 <?php
     return ob_get_clean();
 }
@@ -134,8 +131,8 @@ add_shortcode('custom_checkbox_product_cat', 'custom_checkbox_product_cat_shortc
 
 // Using pre_get_posts to filter the products
 add_action('pre_get_posts', function ($query) {
-    if (!is_admin() && $query->is_main_query() && isset($_GET['cs-product_cat'])) {
-        $product_cat_ids = explode(',', $_GET['cs-product_cat']);
+    if (!is_admin() && $query->is_main_query() && isset($_GET['cs-product-cat'])) {
+        $product_cat_ids = explode(',', $_GET['cs-product-cat']);
         $query->set('tax_query', [
             [
                 'taxonomy' => 'product_cat',
@@ -145,6 +142,16 @@ add_action('pre_get_posts', function ($query) {
             ]
         ]);
     }
+    if (!is_admin() && $query->is_main_query() && isset($_GET['cs-brand'])) {
+        $product_cat_ids = explode(',', $_GET['cs-brand']);
+        $query->set('tax_query', [
+            [
+                'taxonomy' => 'product_brand',
+                'field'    => 'term_id',
+                'terms'    => $product_cat_ids,
+                'operator' => 'IN',
+            ]
+        ]);
+    }
 });
-
 ?>

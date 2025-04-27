@@ -22,11 +22,12 @@ get_header('shop');
 ?>
 
 <section class="">
-	<?php echo do_shortcode('[custom_search_input id_render_ajax="search-id-render-ajax-1" id_input_search="search-id-input-search-1" id_button_search="search-id-button-search-1"]'); ?>
+	<!-- <?php echo do_shortcode('[custom_search_input id_render_ajax="search-id-render-ajax-1" id_input_search="search-id-input-search-1" id_button_search="search-id-button-search-1"]'); ?>
 	<?php echo do_shortcode('[custom_select_category id_render_ajax="search-id-render-ajax-1" id_select_product_cat="category-id-select-product-cat-1"]'); ?>
-	<?php echo do_shortcode('[custom_select_product_sort id_render_ajax="search-id-render-ajax-1" id_select_product_sort="sort-id-select-product-sort-1"]'); ?>
+	<?php echo do_shortcode('[custom_select_product_sort id_render_ajax="search-id-render-ajax-1" id_select_product_sort="sort-id-select-product-sort-1"]'); ?> -->
 
-  <?php echo do_shortcode('[custom_checkbox_product_cat id_render_ajax="search-id-render-ajax-1" id_checkbox_product_cat="category-id-select-product-cat-1" taxonomy="product_brand" cs-query-param="product_brand"]'); ?>
+	<?php echo do_shortcode('[custom_checkbox_product_cat id_render_ajax="search-id-render-ajax-1" id_checkbox_product_cat="category-id-select-product-cat-2" taxonomy="product_cat" cs-query-param="cs-product-cat"]'); ?>
+	<?php echo do_shortcode('[custom_checkbox_product_cat id_render_ajax="search-id-render-ajax-1" id_checkbox_product_cat="category-id-select-product-cat-1" taxonomy="product_brand" cs-query-param="cs-brand"]'); ?>
 
 	<div id="search-id-render-ajax-1" class="flex flex-wrap w-full">
 		<?php
