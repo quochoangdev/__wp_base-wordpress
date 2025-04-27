@@ -4,21 +4,21 @@
 // taxonomy: tên taxonomy
 // cs-query-param: tên query param
 // Ví dụ:
-// [custom_checkbox_product_cat id_render_ajax="..." id_select_product_cat="..." taxonomy="product_brand" cs-query-param="cs-brand"]
+// [custom_checkbox_product_option id_render_ajax="..." id_select_product_cat="..." taxonomy="product_brand" cs-query-param="cs-brand"]
 ?>
 <?php
-function custom_checkbox_product_cat_shortcode($atts)
+function custom_checkbox_product_option_shortcode($atts)
 {
     $atts = shortcode_atts(array(
         'id_render_ajax' => $atts['id_render_ajax'] ?? '',
-        'id_checkbox_product_cat' => $atts['id_checkbox_product_cat'] ?? '',
+        'id_checkbox_product_option' => $atts['id_checkbox_product_option'] ?? '',
         // taxonomy: tên taxonomy
         'taxonomy' => $atts['taxonomy'] ?? '',
         'cs-query-param' => $atts['cs-query-param'] ?? '',
-    ), $atts, 'custom_checkbox_product_cat');
+    ), $atts, 'custom_checkbox_product_option');
     ob_start();
 ?>
-    <form id="<?= esc_attr($atts['id_checkbox_product_cat']) ?>" class="p-2 lg:p-4 space-x-1 lg:space-y-2">
+    <form id="<?= esc_attr($atts['id_checkbox_product_option']) ?>" class="p-2 lg:p-4 space-x-1 lg:space-y-2">
         <?php
         $terms = get_terms([
             'taxonomy' => $atts['taxonomy'],
@@ -38,7 +38,7 @@ function custom_checkbox_product_cat_shortcode($atts)
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const categoryFormMobile = document.querySelector('#<?= esc_attr($atts['id_checkbox_product_cat']) ?>');
+            const categoryFormMobile = document.querySelector('#<?= esc_attr($atts['id_checkbox_product_option']) ?>');
             categoryFormMobile.addEventListener('change', handleCategoryFilterMobile);
             categoryFormMobile.addEventListener('click', function(e) {
                 if (e.target.type === 'checkbox') {
@@ -48,7 +48,7 @@ function custom_checkbox_product_cat_shortcode($atts)
 
             function handleCategoryFilterMobile() {
                 const selectedCategories = [];
-                const checkboxes = document.querySelectorAll('#<?= esc_attr($atts['id_checkbox_product_cat']) ?> input[name="product_cat[]"]');
+                const checkboxes = document.querySelectorAll('#<?= esc_attr($atts['id_checkbox_product_option']) ?> input[name="product_cat[]"]');
 
                 checkboxes.forEach(function(checkbox) {
                     if (checkbox.checked) {
@@ -127,7 +127,7 @@ function custom_checkbox_product_cat_shortcode($atts)
 <?php
     return ob_get_clean();
 }
-add_shortcode('custom_checkbox_product_cat', 'custom_checkbox_product_cat_shortcode');
+add_shortcode('custom_checkbox_product_option', 'custom_checkbox_product_option_shortcode');
 
 // Using pre_get_posts to filter the products
 add_action('pre_get_posts', function ($query) {

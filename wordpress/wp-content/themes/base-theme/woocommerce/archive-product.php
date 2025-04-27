@@ -26,8 +26,8 @@ get_header('shop');
 	<?php echo do_shortcode('[custom_select_category id_render_ajax="search-id-render-ajax-1" id_select_product_cat="category-id-select-product-cat-1"]'); ?>
 	<?php echo do_shortcode('[custom_select_product_sort id_render_ajax="search-id-render-ajax-1" id_select_product_sort="sort-id-select-product-sort-1"]'); ?> -->
 
-	<?php echo do_shortcode('[custom_checkbox_product_cat id_render_ajax="search-id-render-ajax-1" id_checkbox_product_cat="category-id-select-product-cat-2" taxonomy="product_cat" cs-query-param="cs-product-cat"]'); ?>
-	<?php echo do_shortcode('[custom_checkbox_product_cat id_render_ajax="search-id-render-ajax-1" id_checkbox_product_cat="category-id-select-product-cat-1" taxonomy="product_brand" cs-query-param="cs-brand"]'); ?>
+	<?php echo do_shortcode('[custom_checkbox_product_option id_render_ajax="search-id-render-ajax-1" id_checkbox_product_option="category-id-select-product-option-2" taxonomy="product_cat" cs-query-param="cs-product-cat"]'); ?>
+	<?php echo do_shortcode('[custom_checkbox_product_option id_render_ajax="search-id-render-ajax-1" id_checkbox_product_option="category-id-select-product-option-1" taxonomy="product_brand" cs-query-param="cs-brand"]'); ?>
 
 	<div id="search-id-render-ajax-1" class="flex flex-wrap w-full">
 		<?php
