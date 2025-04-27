@@ -7,8 +7,10 @@ require_once get_template_directory() . '/inc/setup.php';
 
 // Common functions
 require_once get_template_directory() . '/inc/common/func-standard.php';
-// require_once get_template_directory() . '/inc/common/func-product-filter.php';
+require_once get_template_directory() . '/inc/common/func-product-filter.php';
 
 // Shortcodes
 require_once get_template_directory() . '/inc/shortcodes/sc_search-input.php';
+require_once get_template_directory() . '/inc/shortcodes/sc_select-category.php';
+require_once get_template_directory() . '/inc/shortcodes/sc_sidebar-product-sort.php';
 ?>

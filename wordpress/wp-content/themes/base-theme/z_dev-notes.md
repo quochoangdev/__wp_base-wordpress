@@ -76,3 +76,5 @@ them_html_vao_hook( 'woocommerce_before_main_content', $html, 3 );
 them_html_vao_hook( 'woocommerce_before_main_content', function() {
     include get_stylesheet_directory() . '/template/banner-sale.php';
 }, 5 );
+
+sub-menu : z-index: 999

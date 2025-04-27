@@ -8,9 +8,9 @@
 function custom_search_input_shortcode($atts)
 {
   $atts = shortcode_atts(array(
-    'id_render_ajax' => $atts['id_render_ajax'],
-    'id_input_search' => $atts['id_input_search'],
-    'id_button_search' => $atts['id_button_search'],
+    'id_render_ajax' => $atts['id_render_ajax'] ?? '',
+    'id_input_search' => $atts['id_input_search'] ?? '',
+    'id_button_search' => $atts['id_button_search'] ?? '',
   ), $atts, 'custom_search_input');
 
   ob_start();

@@ -14,7 +14,9 @@ get_header();
 <!-- search -->
 <section class="">
   <?php echo do_shortcode('[custom_search_input id_render_ajax="search-id-render-ajax-1" id_input_search="search-id-input-search-1" id_button_search="search-id-button-search-1"]'); ?>
-  
+  <?php echo do_shortcode('[custom_select_category id_render_ajax="search-id-render-ajax-1" id_select_product_cat="category-id-select-product-cat-1"]'); ?>
+  <?php echo do_shortcode('[custom_product_sort_dropdown id_render_ajax="search-id-render-ajax-1" id_select_product_sort="sort-id-select-product-sort-1"]'); ?>
+
   <div id="search-id-render-ajax-1" class="flex flex-wrap w-full">
     <?php
     if (have_posts()) {

@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 /**
  * @param array $args
  * @param array $args['ids_data']
@@ -36,14 +37,12 @@
         </div>
     </div>
 </form>
-<!-- hook in function-product-filter.php -->
+
 <script>
     document.body.addEventListener('change', function(e) {
-        // Check if the changed element is the orderby select
         if (e.target && e.target.id === '<?= $ids_data['id_select_product_sort'] ?>') {
             const selectedOrderby = e.target.value;
 
-            // Update the URL with the selected orderby
             const url = new URL(window.location.href);
             if (selectedOrderby) {
                 url.searchParams.set('orderby', selectedOrderby);
@@ -52,18 +51,15 @@
             }
             window.history.replaceState({}, '', url);
 
-            // Ajax request to current url
             const productList = document.querySelector('#<?= $ids_data['id_render_ajax'] ?>');
             productList.innerHTML = '<div class="flex items-center justify-center h-full"><div class="w-10 h-10 border-t-2 border-b-2 border-primary rounded-full animate-spin"></div></div>';
             fetch(url)
                 .then(response => response.text())
                 .then(data => {
-                    // Parse the data to get the #product-list content only
                     const parser = new DOMParser();
                     const doc = parser.parseFromString(data, 'text/html');
                     const newProductList = doc.getElementById('<?= $ids_data['id_render_ajax'] ?>').innerHTML;
 
-                    // Replace the productList with the newProductList
                     productList.innerHTML = newProductList;
                 });
         }

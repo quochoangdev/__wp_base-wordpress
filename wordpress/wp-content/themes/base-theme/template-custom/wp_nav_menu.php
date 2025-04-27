@@ -59,6 +59,7 @@
     .sub-menu {
       display: none;
       position: absolute;
+      z-index: 999;
       top: 100%;
       left: 0;
       width: var(--width-sub-menu);
